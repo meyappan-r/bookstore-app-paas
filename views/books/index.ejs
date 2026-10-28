@@ -12,7 +12,7 @@
       <td><a href="/books/<%= b.id %>"><%= b.title %></a></td>
       <td><%= b.author %></td>
       <td><%= b.genre %></td>
-      <td>$<%= Number(b.price).toFixed(2) %></td>
+      <td>₹<%= Number(b.price).toFixed(2) %></td>
       <td><%= b.stock %></td>
       <td class="actions">
         <a href="/books/<%= b.id %>/edit">Edit</a>

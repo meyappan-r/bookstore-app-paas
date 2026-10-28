@@ -3,7 +3,7 @@
 <dl>
   <dt>Author</dt><dd><%= book.author %></dd>
   <dt>Genre</dt><dd><%= book.genre || '-' %></dd>
-  <dt>Price</dt><dd>$<%= Number(book.price).toFixed(2) %></dd>
+  <dt>Price</dt><dd>₹<%= Number(book.price).toFixed(2) %></dd>
   <dt>In stock</dt><dd><%= book.stock %></dd>
 </dl>
 <p>

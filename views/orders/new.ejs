@@ -12,7 +12,7 @@
       <option value="">-- choose --</option>
       <% books.forEach(b => { %>
         <option value="<%= b.id %>" <%= order.bookId === b.id ? 'selected' : '' %>>
-          <%= b.title %> ($<%= Number(b.price).toFixed(2) %>, <%= b.stock %> in stock)
+          <%= b.title %> (₹<%= Number(b.price).toFixed(2) %>, <%= b.stock %> in stock)
         </option>
       <% }) %>
     </select>

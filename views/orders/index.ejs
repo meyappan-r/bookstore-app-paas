@@ -13,7 +13,7 @@
       <td><%= o.customerName %><br><small><%= o.customerEmail %></small></td>
       <td><%= o.bookTitle %></td>
       <td><%= o.quantity %></td>
-      <td>$<%= Number(o.total).toFixed(2) %></td>
+      <td>₹<%= Number(o.total).toFixed(2) %></td>
       <td><span class="status <%= o.status.toLowerCase() %>"><%= o.status %></span></td>
       <td class="actions">
         <a href="/orders/<%= o.id %>/edit">Edit</a>
