@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+<h1>Books</h1>
+<p><a class="btn" href="/books/new">+ Add book</a></p>
+<% if (!books.length) { %>
+  <p>No books yet.</p>
+<% } else { %>
+<table>
+  <thead><tr><th>Title</th><th>Author</th><th>Genre</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
+  <tbody>
+  <% books.forEach(b => { %>
+    <tr>
+      <td><a href="/books/<%= b.id %>"><%= b.title %></a></td>
+      <td><%= b.author %></td>
+      <td><%= b.genre %></td>
+      <td>$<%= Number(b.price).toFixed(2) %></td>
+      <td><%= b.stock %></td>
+      <td class="actions">
+        <a href="/books/<%= b.id %>/edit">Edit</a>
+        <% if (b.stock > 0) { %><a href="/orders/new?bookId=<%= b.id %>">Order</a><% } %>
+        <form method="post" action="/books/<%= b.id %>/delete" onsubmit="return confirm('Delete this book?')">
+          <button class="link danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+  <% }) %>
+  </tbody>
+</table>
+<% } %>
+<%- include('../partials/footer') %>

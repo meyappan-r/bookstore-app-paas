@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+<h1>Edit order</h1>
+<% errors.forEach(e => { %><p class="error"><%= e %></p><% }) %>
+<p>Book: <strong><%= order.bookTitle %></strong> &times; <%= order.quantity %> (total $<%= Number(order.total).toFixed(2) %>)</p>
+<form method="post" action="/orders/<%= order.id %>">
+  <label>Customer name <input name="customerName" value="<%= order.customerName %>" required></label>
+  <label>Customer email <input name="customerEmail" type="email" value="<%= order.customerEmail %>" required></label>
+  <label>Status
+    <select name="status">
+      <% statuses.forEach(s => { %>
+        <option <%= order.status === s ? 'selected' : '' %>><%= s %></option>
+      <% }) %>
+    </select>
+  </label>
+  <p><button class="btn">Save</button> <a href="/orders">Cancel</a></p>
+</form>
+<%- include('../partials/footer') %>

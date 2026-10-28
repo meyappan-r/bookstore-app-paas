@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<h1>New order</h1>
+<% errors.forEach(e => { %><p class="error"><%= e %></p><% }) %>
+<% if (!books.length) { %>
+  <p>No books are in stock. <a href="/books/new">Add a book</a> first.</p>
+<% } else { %>
+<form method="post" action="/orders">
+  <label>Customer name <input name="customerName" value="<%= order.customerName || '' %>" required></label>
+  <label>Customer email <input name="customerEmail" type="email" value="<%= order.customerEmail || '' %>" required></label>
+  <label>Book
+    <select name="bookId" required>
+      <option value="">-- choose --</option>
+      <% books.forEach(b => { %>
+        <option value="<%= b.id %>" <%= order.bookId === b.id ? 'selected' : '' %>>
+          <%= b.title %> ($<%= Number(b.price).toFixed(2) %>, <%= b.stock %> in stock)
+        </option>
+      <% }) %>
+    </select>
+  </label>
+  <label>Quantity <input name="quantity" type="number" min="1" step="1" value="<%= order.quantity || 1 %>" required></label>
+  <p><button class="btn">Place order</button> <a href="/orders">Cancel</a></p>
+</form>
+<% } %>
+<%- include('../partials/footer') %>
